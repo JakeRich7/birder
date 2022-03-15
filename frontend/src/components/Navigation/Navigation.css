@@ -27,4 +27,56 @@
   cursor: pointer;
 }
 
+.profile-button-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-button {
+  height: 30px;
+  width: 30px;
+  background-color: grey;
+  border-radius: 5px;
+}
+
+.profile-button:hover {
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  background-color: white;
+  padding: 0px;
+  border: 1px solid #333;
+  border-radius: 2px;
+  position: fixed;
+  right: 20px;
+  top: 38px;
+}
+
+.profile-dropdown > li {
+  list-style-type: none;
+  padding: 5px;
+}
+
+.profile-name:hover {
+  cursor: default;
+}
+
+.profile-logout-button {
+  text-decoration: none;
+  border-top: 1px solid black;
+}
+
+.profile-logout-button > b {
+  text-decoration: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background-color: #CECECE
+}
+
+.profile-logout-button > b:hover {
+  background-color: rgb(156, 156, 156);
+  cursor: pointer;
+}
+
 /* 000000, 2F1000, 621B00, 945600, C75000 */

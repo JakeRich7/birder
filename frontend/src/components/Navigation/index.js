@@ -26,8 +26,8 @@ function Navigation({ isLoaded }) {
         <div>
           <NavLink className='login-button' to="/login">Log In</NavLink>
           <NavLink className='signup-button' to="/signup">Sign Up</NavLink>
+          <a href='/' className='demouser-button' onClick={handleSubmit}>Demo User</a>
         </div>
-        <a className='demouser-button' onClick={handleSubmit}>Demo User</a>
       </>
     );
   }
