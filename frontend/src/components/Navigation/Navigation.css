@@ -12,8 +12,18 @@
   margin-right: 20px;
 }
 
-.login-button, .signup-button, .home-button, .demouser-button {
+.login-button, .signup-button, .home-button {
   margin-right: 20px;
+  background-color: #cc7803;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  -webkit-text-stroke-width: .2px;
+  -webkit-text-stroke-color: black;
+}
+
+.demouser-button {
   background-color: #cc7803;
   padding: 5px 10px;
   border-radius: 5px;
