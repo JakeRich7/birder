@@ -12,13 +12,16 @@ function Navigation({ isLoaded }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.login({ credential: "bluejake7", password: "password1" }))
+    return dispatch(sessionActions.login({ credential: "tweetybird55", password: "password1" }))
   }
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <>
+        <NavLink className='about-button' to="about">About</NavLink>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
