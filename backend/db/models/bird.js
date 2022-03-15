@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     conservation_status: DataTypes.STRING
   }, {});
   Bird.associate = function(models) {
-    // associations can be defined here
+    Bird.hasMany(models.Sighting, {foreignKey: 'bird_id'});
   };
   return Bird;
 };

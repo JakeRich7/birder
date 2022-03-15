@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
     details: DataTypes.TEXT
   }, {});
   Sighting.associate = function(models) {
-    // associations can be defined here
+    Sighting.belongsTo(models.User, {foreignKey: 'user_id'});
+    Sighting.belongsTo(models.Bird, {foreignKey: 'bird_id'});
+    Sighting.hasMany(models.Comment, {foreignKey: 'sighting_id'});
   };
   return Sighting;
 };
