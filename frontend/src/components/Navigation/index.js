@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
+    return dispatch(sessionActions.login({ credential: "bluejake7", password: "password1" }))
   }
 
   let sessionLinks;
