@@ -1,0 +1,30 @@
+.nav-bar-ul {
+  list-style-type: none;
+  background-color: #621B00;
+  margin: 0px;
+}
+
+.nav-bar-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.login-button, .signup-button, .home-button, .demouser-button {
+  margin-right: 20px;
+  background-color: #cc7803;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  -webkit-text-stroke-width: .2px;
+  -webkit-text-stroke-color: black;
+}
+
+.demouser-button:hover {
+  cursor: pointer;
+}
+
+/* 000000, 2F1000, 621B00, 945600, C75000 */

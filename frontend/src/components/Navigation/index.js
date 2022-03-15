@@ -6,7 +6,7 @@ import './Navigation.css';
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
 
@@ -23,17 +23,19 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <button onClick={handleSubmit}>demouser</button>
+        <div>
+          <NavLink className='login-button' to="/login">Log In</NavLink>
+          <NavLink className='signup-button' to="/signup">Sign Up</NavLink>
+        </div>
+        <a className='demouser-button' onClick={handleSubmit}>Demo User</a>
       </>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <ul className='nav-bar-ul'>
+      <li className='nav-bar-li'>
+        <NavLink className='home-button' exact to="/">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
