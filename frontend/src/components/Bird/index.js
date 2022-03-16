@@ -37,7 +37,7 @@ function Bird() {
     }
   }, [allSightings, id])
 
-  if (!allBirds || !allSightings) {
+  if (!allBirds || !allSightings || !myBird) {
     return (
       <div className='bird-loading'>Loading...</div>
     )
