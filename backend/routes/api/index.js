@@ -5,16 +5,7 @@ const { User } = require('../../db/models');
 const { restoreUser } = require('../../utils/auth.js');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
-
-router.get('/set-token-cookie', asyncHandler(async (_req, res) => {
-  const user = await User.findOne({
-    where: {
-      username: 'Demo-lition'
-    }
-  });
-  setTokenCookie(res, user);
-  return res.json({ user });
-}));
+const birdsRouter = require('./birds.js');
 
 router.get(
   '/restore-user',
@@ -36,5 +27,7 @@ router.get(
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
+
+router.use('/birds', birdsRouter);
 
 module.exports = router;

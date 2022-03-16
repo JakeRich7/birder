@@ -4,14 +4,17 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
+import * as birdActions from "./store/birds";
 import Navigation from "./components/Navigation";
 import About from "./components/About";
+import Discover from "./components/Discover";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(birdActions.getAll());
   }, [dispatch]);
 
   return (
@@ -27,6 +30,9 @@ function App() {
           </Route>
           <Route path="/about">
             <About />
+          </Route>
+          <Route path="/discover">
+            <Discover />
           </Route>
         </Switch>
       )}
