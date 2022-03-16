@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from './session';
 import birdsReducer from "./birds";
+import sightingsReducer from "./sightings";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   birds: birdsReducer,
+  sightings: sightingsReducer
 });
 
 let enhancer;

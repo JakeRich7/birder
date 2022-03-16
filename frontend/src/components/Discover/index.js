@@ -16,7 +16,7 @@ function Discover() {
     <div>
       {
         allBirds.map(ele => (
-          <div className='discover-main-div'>
+          <div key={ele.id} className='discover-main-div'>
             <div className='discover-image-div'>
               <NavLink to={`/discover/${ele.id}`}><img className='discover-image' src={ele.image} alt='bird-pic' /></NavLink>
             </div>

@@ -6,6 +6,7 @@ const { restoreUser } = require('../../utils/auth.js');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const birdsRouter = require('./birds.js');
+const sightingsRouter = require('./sightings.js');
 
 router.get(
   '/restore-user',
@@ -29,5 +30,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 router.use('/birds', birdsRouter);
+
+router.use('/sightings', sightingsRouter);
 
 module.exports = router;

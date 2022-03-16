@@ -5,9 +5,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import * as birdActions from "./store/birds";
+import * as sightingActions from "./store/sightings";
 import Navigation from "./components/Navigation";
 import About from "./components/About";
 import Discover from "./components/Discover";
+import Bird from "./components/Bird";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +17,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     dispatch(birdActions.getAll());
+    dispatch(sightingActions.getAll());
   }, [dispatch]);
 
   return (
@@ -22,17 +25,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/about">
+          <Route exact path="/about">
             <About />
           </Route>
-          <Route path="/discover">
+          <Route exact path="/discover">
             <Discover />
+          </Route>
+          <Route exact path="/discover/:id">
+            <Bird />
           </Route>
         </Switch>
       )}
