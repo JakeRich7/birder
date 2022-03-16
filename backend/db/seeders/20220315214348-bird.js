@@ -22,6 +22,16 @@ module.exports = {
         image: 'https://res.cloudinary.com/dd9pletih/image/upload/v1647389985/fiery_throated_hummingbird_ty9kvh.jpg',
         range: 'Found in Costa Rica and on the western edge of Panama',
         conservation_status: 'Least Concern'
+      },
+      {
+        common_name: 'California Quail',
+        scientific_name: 'Callipepla california',
+        family: 'New World Quail',
+        description: 'Small and rotund with obvious teardrop-shaped plumes protruding from forehead. Looks gray and brown at a distance, with white streaks on the sides and a scaly belly. Males have black face and longer, more curled crest than females. Usually seen in flocks running on the ground in open, scrubby habitats. Listen for frequent, three-noted call, audible at long distances. Separated from similar Gambel’s Quail by range; also note California has scaly belly with rusty (not black) patch and duller brown crown and sides. Native to western North America including Baja California; well-established introduced populations in Chile, Argentina, New Zealand, and Hawaii.',
+        sounds: 'https://res.cloudinary.com/dd9pletih/video/upload/v1647467550/california_quail_sypw60.mp3',
+        image: 'https://res.cloudinary.com/dd9pletih/image/upload/v1647467550/california_quail_vlko2c.jpg',
+        range: 'Found along the west coasts of North and South America',
+        conservation_status: 'Least Concern'
       }
     ]);
   },
