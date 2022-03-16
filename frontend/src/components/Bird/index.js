@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './Bird.css';
+import Sighting from '../Sighting';
 
 function Bird() {
   const { id } = useParams();
@@ -9,6 +10,7 @@ function Bird() {
   const allSightings = useSelector(state => state.sightings.allSightings);
   const [myBird, setMyBird] = useState('');
   const [myStatusColor, setMyStatusColor] = useState('rgb(213, 247, 255)');
+  const [birdSightings, setBirdSightings] = useState([]);
 
   useEffect(() => {
     if (allBirds) {
@@ -23,7 +25,19 @@ function Bird() {
     }
   }, [allBirds, id]);
 
-  if (!allBirds) {
+  useEffect(() => {
+    if (allSightings) {
+      let birdsArr = []
+      allSightings.forEach(ele => {
+        if (ele.bird_id === Number(id)) {
+          birdsArr.push(ele);
+        }
+      })
+      setBirdSightings(birdsArr);
+    }
+  }, [allSightings, id])
+
+  if (!allBirds || !allSightings) {
     return (
       <div className='bird-loading'>Loading...</div>
     )
@@ -55,6 +69,14 @@ function Bird() {
             </div>
             <audio className='bird-sound' controls src={myBird.sounds} />
           </div>
+        </div>
+        <div>
+          {
+            birdSightings &&
+            birdSightings.map(ele => {
+              return <Sighting key={ele.id} sighting={ele} />
+            })
+          }
         </div>
       </div>
     </div>

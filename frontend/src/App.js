@@ -15,9 +15,9 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser());
     dispatch(birdActions.getAll());
-    dispatch(sightingActions.getAll());
+    dispatch(sightingActions.getAll()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
