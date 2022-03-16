@@ -7,6 +7,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const birdsRouter = require('./birds.js');
 const sightingsRouter = require('./sightings.js');
+const commentsRouter = require('./comments.js');
 
 router.get(
   '/restore-user',
@@ -32,5 +33,7 @@ router.use('/users', usersRouter);
 router.use('/birds', birdsRouter);
 
 router.use('/sightings', sightingsRouter);
+
+router.use('/comments', commentsRouter);
 
 module.exports = router;

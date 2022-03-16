@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import * as birdActions from "./store/birds";
 import * as sightingActions from "./store/sightings";
+import * as commentActions from "./store/comments";
 import Navigation from "./components/Navigation";
 import About from "./components/About";
 import Discover from "./components/Discover";
@@ -19,7 +20,8 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser());
     dispatch(birdActions.getAll());
-    dispatch(sightingActions.getAll()).then(() => setIsLoaded(true));
+    dispatch(sightingActions.getAll());
+    dispatch(commentActions.getAll()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (

@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import birdsReducer from "./birds";
 import sightingsReducer from "./sightings";
+import commentsReducer from "./comments";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   birds: birdsReducer,
-  sightings: sightingsReducer
+  sightings: sightingsReducer,
+  comments: commentsReducer
 });
 
 let enhancer;
