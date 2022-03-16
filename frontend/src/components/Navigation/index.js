@@ -21,6 +21,7 @@ function Navigation({ isLoaded }) {
       <>
         <div>
           <NavLink className='discover-button' to="/discover">Discover</NavLink>
+          <NavLink className='mybirder-button' to="/mybirder">MyBirder</NavLink>
           <NavLink className='about-button' to="/about">About</NavLink>
         </div>
         <ProfileButton user={sessionUser} />

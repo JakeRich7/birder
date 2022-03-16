@@ -20,6 +20,12 @@ module.exports = {
         bird_id: 1,
         address: 'American Fork, Utah',
         details: 'Saw this big guy about 1000ft west of the freeway'
+      },
+      {
+        user_id: 1,
+        bird_id: 1,
+        address: 'American Fork, Utah',
+        details: 'Saw this owl again! Very surprised.'
       }
     ]);
   },

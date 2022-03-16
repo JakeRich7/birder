@@ -1,0 +1,28 @@
+.mybirder-loading {
+  font-size: 50px;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.mybirder-fullpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mybirder-innerpage {
+  width: 80%;
+  height: 100vh;
+  background-color: #621B00;
+}
+
+.mybirder-bird-name {
+  background-color: rgb(213, 247, 255);
+}
+
+.mybirder-bird-name {
+  padding: 5px;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

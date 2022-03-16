@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
@@ -10,8 +10,10 @@ import Navigation from "./components/Navigation";
 import About from "./components/About";
 import Discover from "./components/Discover";
 import Bird from "./components/Bird";
+import MyBirder from "./components/MyBirder";
 
 function App() {
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -31,6 +33,10 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+          {
+            !sessionUser &&
+            <Redirect to='/' />
+          }
           <Route exact path="/about">
             <About />
           </Route>
@@ -39,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/discover/:id">
             <Bird />
+          </Route>
+          <Route exact path="/mybirder">
+            <MyBirder />
           </Route>
         </Switch>
       )}

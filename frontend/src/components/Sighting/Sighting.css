@@ -1,4 +1,4 @@
-.about-div {
+.sighting-div {
   background-color: rgb(255, 201, 53);
   margin: 10px;
   height: 150px;
@@ -6,21 +6,21 @@
   display: block;
 }
 
-.about-user {
+.sighting-user {
   margin-top: 30px;
   padding: 10px 35px;
   font-size: 25px;
   opacity: .5;
 }
 
-.about-details-header {
+.sighting-details-header {
   padding-top: 10px;
   padding-left: 5px;
   font-size: 23px;
   font-weight: 600;
 }
 
-.about-details {
+.sighting-details {
   margin-left: 20px;
   font-size: larger;
 }
