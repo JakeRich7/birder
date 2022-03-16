@@ -1,3 +1,9 @@
+.discover-loading {
+  font-size: 50px;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
 .discover-main-div {
   display: flex;
   margin: 30px;
@@ -60,10 +66,4 @@
   font-weight: 600;
   margin-left: 15px;
   font-style: italic;
-}
-
-.discover-loading {
-  font-size: 50px;
-  margin-left: 40px;
-  margin-top: 20px;
 }

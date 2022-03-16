@@ -3,3 +3,93 @@
   margin-left: 40px;
   margin-top: 20px;
 }
+
+.bird-fullpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bird-innerpage {
+  width: 80%;
+  background-color: #621B00;
+}
+
+.bird-image {
+  max-width: 100%;
+}
+
+.bird-descriptive-content {
+  padding: 20px;
+}
+
+.bird-name {
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(213, 247, 255);
+  -webkit-text-stroke-width: .3px;
+  -webkit-text-stroke-color: black;
+}
+
+.bird-sname {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.bird-family {
+  display: inline;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: rgb(213, 247, 255);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.bird-names {
+  margin-bottom: 20px;
+}
+
+.bird-grey-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgb(97, 97, 97);
+  border-radius: 5px;
+}
+
+.bird-sound {
+  margin: 10px;
+}
+
+.bird-description, .bird-range {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.bird-description-header, .bird-range-header {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.bird-full-description-div, .bird-range-main-div {
+  margin-bottom: 20px;
+}
+
+.bird-names-and-status {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bird-status {
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: larger;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

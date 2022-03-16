@@ -20,7 +20,7 @@ module.exports = {
         description: 'If you see the throat in good light, there is no mistaking this beauty: no other hummingbird combines every color of the rainbow on the throat and breast. In poor light, could be mistaken for other fairly large hummingbirds like Talamanca Hummingbird. Look for dark blue-black tail, medium-length bill with pink at the base, and blue rump, or just wait for it to turn its head. Sexes alike. Found in montane forests and edges, mostly from 1500m to treeline. Frequently visits feeders',
         sounds: 'https://res.cloudinary.com/dd9pletih/video/upload/v1647389983/fiery_throated_hummingbird_g2csua.mp3',
         image: 'https://res.cloudinary.com/dd9pletih/image/upload/v1647389985/fiery_throated_hummingbird_ty9kvh.jpg',
-        range: 'Found in Costa Rica and on the wester edge of Panama',
+        range: 'Found in Costa Rica and on the western edge of Panama',
         conservation_status: 'Least Concern'
       }
     ]);
