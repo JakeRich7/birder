@@ -7,7 +7,7 @@
 }
 
 .sighting-user {
-  margin-top: 30px;
+  margin-bottom: 5px;
   padding: 10px 35px;
   font-size: 25px;
   opacity: .5;
@@ -23,4 +23,32 @@
 .sighting-details {
   margin-left: 20px;
   font-size: larger;
+}
+
+.sighting-edit-delete-div {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.sighting-edit-button {
+  width: 60px;
+  height: 22px;
+  border-radius: 7px;
+  background-color: #D9AFD9;
+  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+  margin-left: 5px;
+}
+
+.sighting-delete-button {
+  width: 60px;
+  height: 22px;
+  border-radius: 7px;
+  background-image: linear-gradient(0deg, rgb(248, 104, 104) 0%, rgb(247, 0, 0) 100%);
+  margin-left: 5px;
+}
+
+.sighting-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

@@ -78,6 +78,9 @@ function Bird() {
             })
           }
         </div>
+        <div className='bird-add-sighting-div'>
+          <button className='bird-add-sighting-button'>Add Sighting</button>
+        </div>
       </div>
     </div>
   );
