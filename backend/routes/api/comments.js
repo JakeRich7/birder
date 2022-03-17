@@ -14,4 +14,23 @@ router.get(
   })
 )
 
+router.post(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { user_id, sighting_id, body } = req.body;
+
+    const postedComment = await Comment.create({
+      user_id,
+      sighting_id,
+      body
+    })
+
+    const comment = await Comment.findOne({ where: { id: postedComment.id } });
+
+    return res.json({
+      comment
+    });
+  })
+)
+
 module.exports = router;

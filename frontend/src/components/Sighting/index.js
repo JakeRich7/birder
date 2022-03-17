@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Sighting.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sightingActions from "../../store/sightings";
+import * as commentActions from "../../store/comments";
 import Comment from '../Comment';
 
 function Sighting({ sighting }) {
@@ -60,11 +61,18 @@ function Sighting({ sighting }) {
 
   const handleAddComment = async (e) => {
     e.preventDefault();
-    // let sightingId = sighting.id;
-    // const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }));
-    // setSightingDetails(response.details);
-    // setSightingAddress(response.address);
-    // handleToggle();
+    let sightingId = sighting.id;
+    let myComment = await dispatch(commentActions.createOne({ user_id: id, sighting_id: sightingId, body }));
+
+    let newArr = [];
+    sightingComments.forEach(ele => {
+      newArr.push(ele);
+    })
+    newArr.push(myComment);
+    setSightingComments(newArr);
+
+    toggleComment();
+    return myComment;
   }
 
   if (!isHere || !allComments) {
@@ -131,7 +139,7 @@ function Sighting({ sighting }) {
       }
       {
         addCommentStatus &&
-        <form onSubmit={handleEdit}>
+        <form onSubmit={handleAddComment}>
           <label className="sighting-body-label">
             Body:
           </label>
