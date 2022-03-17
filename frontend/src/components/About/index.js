@@ -4,8 +4,6 @@ import jakeimage from './jake-about.jpg';
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 function About() {
-
-
   return (
     <div className='about-div'>
       <img className='jake-image' src={jakeimage} alt='pic of me' />

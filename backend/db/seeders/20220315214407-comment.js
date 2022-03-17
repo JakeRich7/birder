@@ -17,6 +17,11 @@ module.exports = {
         user_id: 4,
         sighting_id: 2,
         body: 'Love these little guys. Have a bird feeder in my backyard and see them all the time'
+      },
+      {
+        user_id: 1,
+        sighting_id: 3,
+        body: 'Owls are so majestic'
       }
     ]);
   },

@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { Sighting } = require('../../db/models');
 const { User } = require('../../db/models');
 const { Bird } = require('../../db/models');
+const { Comment } = require('../../db/models');
 const router = express.Router();
 
 router.get(
@@ -61,6 +62,10 @@ router.delete(
   '/:sightingId',
   asyncHandler(async (req, res) => {
     const sightingToDelete = req.params.sightingId;
+
+    await Comment.destroy(
+      { where: { sighting_id: sightingToDelete } }
+    )
 
     const sighting = await Sighting.destroy(
       { where: { id: sightingToDelete } }

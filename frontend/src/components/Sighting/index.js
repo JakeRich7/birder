@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sighting.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sightingActions from "../../store/sightings";
+import Comment from '../Comment';
 
 function Sighting({ sighting }) {
   const dispatch = useDispatch();
   const id = useSelector(state => state.session.user.id);
+  const allComments = useSelector(state => state.comments.allComments);
   const [isHere, setIsHere] = useState(true);
   const [editStatus, setEditStatus] = useState(false);
+  const [addCommentStatus, setAddCommentStatus] = useState(false);
   const [address, setAddress] = useState("");
   const [details, setDetails] = useState("");
   const [sightingDetails, setSightingDetails] = useState(sighting.details);
   const [sightingAddress, setSightingAddress] = useState(sighting.address);
+  const [commentStatus, setCommentStatus] = useState(false);
+  const [sightingComments, setSightingComments] = useState([]);
+  const [body, setBody] = useState("");
+
+  useEffect(() => {
+    let newArr = [];
+    allComments.forEach(ele => {
+      if (ele.sighting_id === sighting.id) {
+        newArr.push(ele);
+      }
+    });
+    setSightingComments(newArr);
+  }, [allComments, sighting.id])
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -25,34 +41,57 @@ function Sighting({ sighting }) {
     setEditStatus(!editStatus);
   }
 
+  const toggleComment = async (e) => {
+    setAddCommentStatus(!addCommentStatus);
+  }
+
+  const handleComments = async (e) => {
+    setCommentStatus(!commentStatus);
+  }
+
   const handleEdit = async (e) => {
     e.preventDefault();
     let sightingId = sighting.id;
-    const response = await dispatch(sightingActions.editOne({id: sightingId, address, details}));
+    const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }));
     setSightingDetails(response.details);
     setSightingAddress(response.address);
     handleToggle();
   }
 
-  if (!isHere) {
+  const handleAddComment = async (e) => {
+    e.preventDefault();
+    // let sightingId = sighting.id;
+    // const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }));
+    // setSightingDetails(response.details);
+    // setSightingAddress(response.address);
+    // handleToggle();
+  }
+
+  if (!isHere || !allComments) {
     return null;
   }
 
   return (
-    <div className='sighting-div'>
-      <div>
-        <div className='sighting-address-header'>Sighting Location:</div>
-        <div className='sighting-address'>{sightingAddress}</div>
-        <div className='sighting-details-header'>Sighting Details:</div>
-        <div className='sighting-details'>{sightingDetails}</div>
-        {
-          id === sighting.user_id &&
-          <div className='sighting-edit-delete-div' >
-            <button onClick={handleToggle} className='sighting-edit-button'>Edit</button>
-            <button onClick={handleDelete} className='sighting-delete-button'>Delete</button>
+    <>
+      <div className='sighting-div'>
+        <div>
+          <div className='sighting-address-header'>Sighting Location:</div>
+          <div className='sighting-address'>{sightingAddress}</div>
+          <div className='sighting-details-header'>Sighting Details:</div>
+          <div className='sighting-details'>{sightingDetails}</div>
+          <div className='sighting-buttons-div'>
             {
-              editStatus &&
-              <form onSubmit={handleEdit}>
+              id === sighting.user_id &&
+              <div className='sighting-edit-delete-div' >
+                <button onClick={handleToggle} className='sighting-edit-button'>Edit</button>
+                <button onClick={handleDelete} className='sighting-delete-button'>Delete</button>
+              </div>
+            }
+            <button onClick={handleComments} className='sighting-comments-button'>Show Comments</button>
+          </div>
+          {
+            editStatus &&
+            <form onSubmit={handleEdit}>
               <label className="sighting-address-label">
                 Address:
               </label>
@@ -74,12 +113,38 @@ function Sighting({ sighting }) {
               />
               <button className="sighting-upload-create-button-link" onClick={handleEdit}>Confirm Edit</button>
             </form>
-            }
-          </div>
-        }
+          }
+        </div>
+        <div className='sighting-user'>{`- ${sighting.User.username}`}</div>
       </div>
-      <div className='sighting-user'>{`- ${sighting.User.username}`}</div>
-    </div>
+      {
+        commentStatus &&
+        sightingComments.map(ele => {
+          return <Comment key={ele.id} comment={ele} id={id} />
+        })
+      }
+      {
+        commentStatus &&
+        <div className='sighting-add-comment'>
+          <button onClick={toggleComment} className='sighting-add-comment-button'>Add Comment</button>
+        </div>
+      }
+      {
+        addCommentStatus &&
+        <form onSubmit={handleEdit}>
+          <label className="sighting-body-label">
+            Body:
+          </label>
+          <textarea
+            className="sighting-upload-body"
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
+            required
+          />
+          <button className="sighting-upload-create-button-link" onClick={handleAddComment}>Confirm Edit</button>
+        </form>
+      }
+    </>
   );
 }
 
