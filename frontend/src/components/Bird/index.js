@@ -56,6 +56,7 @@ function Bird() {
     })
     newArr.push(mySighting);
     setBirdSightings(newArr);
+    toggleForm();
     return;
   }
 
@@ -105,26 +106,26 @@ function Bird() {
           {
             formStatus &&
             <form onSubmit={handleSubmit}>
-              <label className="sighting-address-label">
+              <label className="bird-address-label">
                 Address:
               </label>
               <input
-                className="sighting-upload-address"
+                className="bird-upload-address"
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 required
               />
-              <label className="sighting-details-label">
+              <label className="bird-details-label">
                 Details:
               </label>
               <textarea
-                className="sighting-upload-details"
+                className="bird-upload-details"
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
                 required
               />
-              <button className="sighting-upload-create-button-link" onClick={handleSubmit}>Upload</button>
+              <button className="bird-upload-create-button-link" onClick={handleSubmit}>Upload</button>
             </form>
           }
         </div>

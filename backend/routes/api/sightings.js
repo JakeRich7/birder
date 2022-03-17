@@ -16,6 +16,27 @@ router.get(
   })
 )
 
+router.put(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { id, address, details } = req.body;
+
+    const mySighting = await Sighting.findByPk(id);
+    mySighting.set({
+      address: address,
+      details: details
+    });
+
+    await mySighting.save();
+
+    const sighting = await Sighting.findOne({ where: { id: mySighting.id }, include: [{ model: User }, { model: Bird }] });
+
+    return res.json({
+      sighting
+    });
+  })
+)
+
 router.post(
   '/',
   asyncHandler(async (req, res) => {
