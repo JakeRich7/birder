@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import * as commentActions from "../../store/comments";
 import './Comment.css';
 
+
 function Comment({ comment, id }) {
+  const dispatch = useDispatch();
   const [editStatus, setEditStatus] = useState(false);
   const [body, setBody] = useState("");
+  const [isHere, setIsHere] = useState(true);
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    // let sightingId = sighting.id;
-    // await dispatch(sightingActions.deleteOne(sightingId));
-    // setIsHere(false);
-    // return;
+    await dispatch(commentActions.deleteOne(comment.id));
+    setIsHere(false);
+    return;
   }
 
   const handleToggle = async (e) => {
@@ -25,6 +28,10 @@ function Comment({ comment, id }) {
     // setSightingDetails(response.details);
     // setSightingAddress(response.address);
     // handleToggle();
+  }
+
+  if (!isHere) {
+    return null;
   }
 
   return (
@@ -45,7 +52,7 @@ function Comment({ comment, id }) {
         <div>
           {
             editStatus &&
-            <form onSubmit={handleEdit}>
+            <form>
               <label className="comment-body-label">
                 Body:
               </label>

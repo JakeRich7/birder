@@ -99,7 +99,7 @@ function Sighting({ sighting }) {
           </div>
           {
             editStatus &&
-            <form onSubmit={handleEdit}>
+            <form>
               <label className="sighting-address-label">
                 Address:
               </label>
@@ -139,7 +139,7 @@ function Sighting({ sighting }) {
       }
       {
         addCommentStatus &&
-        <form onSubmit={handleAddComment}>
+        <form>
           <label className="sighting-body-label">
             Body:
           </label>
@@ -149,7 +149,7 @@ function Sighting({ sighting }) {
             onChange={(e) => setBody(e.target.value)}
             required
           />
-          <button className="sighting-upload-create-button-link" onClick={handleAddComment}>Confirm Edit</button>
+          <button className="sighting-upload-create-button-link" onClick={handleAddComment}>Submit</button>
         </form>
       }
     </>

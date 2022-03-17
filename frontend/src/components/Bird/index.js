@@ -105,7 +105,7 @@ function Bird() {
           <button onClick={toggleForm} className='bird-add-sighting-button'>Add Sighting</button>
           {
             formStatus &&
-            <form onSubmit={handleSubmit}>
+            <form>
               <label className="bird-address-label">
                 Address:
               </label>
@@ -125,7 +125,7 @@ function Bird() {
                 onChange={(e) => setDetails(e.target.value)}
                 required
               />
-              <button className="bird-upload-create-button-link" onClick={handleSubmit}>Upload</button>
+              <button className="bird-upload-create-button-link" onClick={handleSubmit}>Submit</button>
             </form>
           }
         </div>
