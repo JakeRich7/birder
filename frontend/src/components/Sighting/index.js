@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sighting.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as sightingActions from "../../store/sightings";
 
 function Sighting({ sighting }) {
+  const dispatch = useDispatch();
   const id = useSelector(state => state.session.user.id);
+  const [isHere, setIsHere] = useState(true);
+
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    let sightingId = sighting.id
+    await dispatch(sightingActions.deleteOne(sightingId));
+    setIsHere(false);
+    return;
+  }
+
+  if (!isHere) {
+    return null;
+  }
 
   return (
     <div className='sighting-div'>
@@ -14,7 +29,7 @@ function Sighting({ sighting }) {
           id === sighting.user_id &&
           <div className='sighting-edit-delete-div' >
             <button className='sighting-edit-button'>Edit</button>
-            <button className='sighting-delete-button'>Delete</button>
+            <button onClick={handleDelete} className='sighting-delete-button'>Delete</button>
           </div>
         }
       </div>

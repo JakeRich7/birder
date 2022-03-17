@@ -36,4 +36,19 @@ router.post(
   })
 )
 
+router.delete(
+  '/:sightingId',
+  asyncHandler(async (req, res) => {
+    const sightingToDelete = req.params.sightingId;
+
+    const sighting = await Sighting.destroy(
+      { where: { id: sightingToDelete } }
+    )
+
+    return res.json({
+      sighting
+    });
+  })
+)
+
 module.exports = router;
