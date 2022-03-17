@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import './Bird.css';
 import Sighting from '../Sighting';
+import * as sightingActions from "../../store/sightings";
 
 function Bird() {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const allBirds = useSelector(state => state.birds.allBirds);
   const allSightings = useSelector(state => state.sightings.allSightings);
+  const userId = useSelector(state => state.session.user.id);
   const [myBird, setMyBird] = useState('');
   const [myStatusColor, setMyStatusColor] = useState('rgb(213, 247, 255)');
   const [birdSightings, setBirdSightings] = useState([]);
+  const [formStatus, setFormStatus] = useState(false);
+  const [address, setAddress] = useState("");
+  const [details, setDetails] = useState("");
 
   useEffect(() => {
     if (allBirds) {
@@ -37,6 +43,22 @@ function Bird() {
     }
   }, [allSightings, id])
 
+  const toggleForm = async (e) => {
+    setFormStatus(!formStatus);
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let mySighting = await dispatch(sightingActions.createOne({ user_id: userId, bird_id: Number(id) ,address, details }));
+    let newArr = [];
+    birdSightings.forEach(ele => {
+      newArr.push(ele);
+    })
+    newArr.push(mySighting);
+    setBirdSightings(newArr);
+    return;
+  }
+
   if (!allBirds || !allSightings || !myBird) {
     return (
       <div className='bird-loading'>Loading...</div>
@@ -56,7 +78,7 @@ function Bird() {
                 <div className='bird-family'>{myBird.family}</div>
               </div>
               <div>
-                <div style={{backgroundColor: myStatusColor}} className='bird-status'>{myBird.conservation_status}</div>
+                <div style={{ backgroundColor: myStatusColor }} className='bird-status'>{myBird.conservation_status}</div>
               </div>
             </div>
             <div className='bird-full-description-div'>
@@ -79,7 +101,32 @@ function Bird() {
           }
         </div>
         <div className='bird-add-sighting-div'>
-          <button className='bird-add-sighting-button'>Add Sighting</button>
+          <button onClick={toggleForm} className='bird-add-sighting-button'>Add Sighting</button>
+          {
+            formStatus &&
+            <form onSubmit={handleSubmit}>
+              <label className="sighting-address-label">
+                Address:
+              </label>
+              <input
+                className="sighting-upload-address"
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+              <label className="sighting-details-label">
+                Details:
+              </label>
+              <textarea
+                className="sighting-upload-details"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+                required
+              />
+              <button className="sighting-upload-create-button-link" onClick={handleSubmit}>Upload</button>
+            </form>
+          }
         </div>
       </div>
     </div>

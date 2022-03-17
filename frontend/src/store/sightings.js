@@ -1,4 +1,7 @@
+import { csrfFetch } from "./csrf";
+
 const GET_SIGHTINGS = 'sightings/getAll';
+const POST_SIGHTING = 'sightings/postOne';
 
 const getSightings = (allSightings) => {
   return {
@@ -6,6 +9,13 @@ const getSightings = (allSightings) => {
     payload: allSightings,
   };
 };
+
+const postSighting = (newSighting) => {
+  return {
+    type: POST_SIGHTING,
+    payload: newSighting,
+  }
+}
 
 export const getAll = () => async (dispatch) => {
   const response = await fetch("/api/sightings", {
@@ -17,14 +27,33 @@ export const getAll = () => async (dispatch) => {
   return response;
 };
 
+export const createOne = (newSighting) => async (dispatch) => {
+  const { user_id, bird_id, address, details } = newSighting;
+  const response = await csrfFetch('/api/sightings', {
+    method: 'POST',
+    body: JSON.stringify({
+      user_id,
+      bird_id,
+      address,
+      details
+    }),
+  });
+  const data = await response.json();
+  const { sighting } = data;
+  dispatch(postSighting(sighting));
+  return sighting;
+};
+
 const initialState = { allSightings: null };
 
 const sightingsReducer = (state = initialState, action) => {
-  let newState;
+  let newState = {...state};
   switch (action.type) {
     case GET_SIGHTINGS:
-      newState = Object.assign({}, state);
       newState.allSightings = action.payload;
+      return newState;
+    case POST_SIGHTING:
+      newState.allSightings.push(action.payload);
       return newState;
     default:
       return state;

@@ -16,4 +16,24 @@ router.get(
   })
 )
 
+router.post(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { user_id, bird_id, address, details } = req.body;
+
+    const postedSighting = await Sighting.create({
+      user_id,
+      bird_id,
+      address,
+      details
+    })
+
+    const sighting = await Sighting.findOne({ where: { id: postedSighting.id }, include: [{ model: User }, { model: Bird }] });
+
+    return res.json({
+      sighting
+    });
+  })
+)
+
 module.exports = router;
