@@ -139,3 +139,7 @@
   resize: none;
   height: 120px;
 }
+
+.bird-add-comment-error-ul {
+  color: white
+}

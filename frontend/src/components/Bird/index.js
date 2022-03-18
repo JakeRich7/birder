@@ -17,6 +17,7 @@ function Bird() {
   const [formStatus, setFormStatus] = useState(false);
   const [address, setAddress] = useState("");
   const [details, setDetails] = useState("");
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     if (allBirds) {
@@ -49,7 +50,14 @@ function Bird() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    let mySighting = await dispatch(sightingActions.createOne({ user_id: userId, bird_id: Number(id) ,address, details }));
+    let mySighting = await dispatch(sightingActions.createOne({ user_id: userId, bird_id: Number(id), address, details }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
+    if (!mySighting) {
+      return
+    }
     let newArr = [];
     birdSightings.forEach(ele => {
       newArr.push(ele);
@@ -106,6 +114,9 @@ function Bird() {
           {
             formStatus &&
             <form className='bird-upload-adress-form'>
+              <ul className='bird-add-comment-error-ul'>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
               <label className="bird-address-label">
                 Address:
               </label>

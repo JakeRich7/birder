@@ -5,6 +5,62 @@ const { User } = require('../../db/models');
 const { Bird } = require('../../db/models');
 const { Comment } = require('../../db/models');
 const router = express.Router();
+const { check } = require('express-validator');
+const { validationResult } = require('express-validator');
+
+const handleValidatePostErrors = (req, _res, next) => {
+  const validationErrors = validationResult(req);
+
+  if (!validationErrors.isEmpty()) {
+    const errors = validationErrors
+      .array()
+      .map((error) => `${error.msg}`);
+
+    const err = Error('Bad request.');
+    err.errors = errors;
+    err.status = 400;
+    err.title = 'Bad request.';
+    next(err);
+  }
+  next();
+}
+
+const validatePost = [
+  check('address')
+    .exists({ checkFalsy: true })
+    .withMessage('Need an address'),
+  check('details')
+    .exists({ checkFalsy: true })
+    .withMessage('Details cannot be blank'),
+  handleValidatePostErrors
+];
+
+const handleValidateEditErrors = (req, _res, next) => {
+  const validationErrors = validationResult(req);
+
+  if (!validationErrors.isEmpty()) {
+    const errors = validationErrors
+      .array()
+      .map((error) => `${error.msg}`);
+
+    const err = Error('Bad request.');
+    err.errors = errors;
+    err.status = 400;
+    err.title = 'Bad request.';
+    next(err);
+  }
+  next();
+}
+
+const validateEdit = [
+  check('address')
+    .exists({ checkFalsy: true })
+    .withMessage('Need an address'),
+  check('details')
+    .exists({ checkFalsy: true })
+    .withMessage('Details cannot be blank'),
+  handleValidateEditErrors
+];
 
 router.get(
   '/',
@@ -19,6 +75,7 @@ router.get(
 
 router.put(
   '/',
+  validateEdit,
   asyncHandler(async (req, res) => {
     const { id, address, details } = req.body;
 
@@ -40,6 +97,7 @@ router.put(
 
 router.post(
   '/',
+  validatePost,
   asyncHandler(async (req, res) => {
     const { user_id, bird_id, address, details } = req.body;
 

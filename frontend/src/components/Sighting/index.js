@@ -19,6 +19,8 @@ function Sighting({ sighting }) {
   const [commentStatus, setCommentStatus] = useState(false);
   const [sightingComments, setSightingComments] = useState([]);
   const [body, setBody] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [commentErrors, setCommentErrors] = useState([]);
 
   useEffect(() => {
     let newArr = [];
@@ -53,7 +55,14 @@ function Sighting({ sighting }) {
   const handleEdit = async (e) => {
     e.preventDefault();
     let sightingId = sighting.id;
-    const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }));
+    const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
+    if (!response) {
+      return
+    }
     setSightingDetails(response.details);
     setSightingAddress(response.address);
     handleToggle();
@@ -62,8 +71,14 @@ function Sighting({ sighting }) {
   const handleAddComment = async (e) => {
     e.preventDefault();
     let sightingId = sighting.id;
-    let myComment = await dispatch(commentActions.createOne({ user_id: id, sighting_id: sightingId, body }));
-
+    let myComment = await dispatch(commentActions.createOne({ user_id: id, sighting_id: sightingId, body }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setCommentErrors(data.errors);
+      })
+    if (!myComment) {
+      return
+    }
     let newArr = [];
     sightingComments.forEach(ele => {
       newArr.push(ele);
@@ -100,6 +115,9 @@ function Sighting({ sighting }) {
           {
             editStatus &&
             <form className='sighting-address-details-form'>
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
               <label className="sighting-address-label">
                 Address:
               </label>
@@ -140,6 +158,9 @@ function Sighting({ sighting }) {
       {
         addCommentStatus &&
         <form className='sighting-upload-comment-form'>
+          <ul className='sighting-add-comment-error-ul'>
+            {commentErrors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
           <label className="sighting-upload-body-label">
             Body:
           </label>

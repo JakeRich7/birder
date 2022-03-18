@@ -10,6 +10,7 @@ function Comment({ comment, id }) {
   const [body, setBody] = useState("");
   const [commentBody, setCommentBody] = useState(comment.body);
   const [isHere, setIsHere] = useState(true);
+  const [errors, setErrors] = useState([]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -24,7 +25,14 @@ function Comment({ comment, id }) {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const response = await dispatch(commentActions.editOne({ id: comment.id, body }));
+    const response = await dispatch(commentActions.editOne({ id: comment.id, body }))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      })
+    if (!response) {
+      return
+    }
     setCommentBody(response.body);
     handleToggle();
   }
@@ -52,6 +60,9 @@ function Comment({ comment, id }) {
           {
             editStatus &&
             <form className='comment-body-form'>
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
               <label className="comment-body-label">
                 Body:
               </label>
