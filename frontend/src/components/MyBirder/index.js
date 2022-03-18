@@ -29,6 +29,7 @@ function MyBirder() {
   return (
     <div className='mybirder-fullpage'>
       <div className='mybirder-innerpage'>
+        <div className='mybirder-inner-colorpage'>
         {
           birdSightings &&
           birdSightings.map(ele => {
@@ -38,6 +39,8 @@ function MyBirder() {
             </div>
           })
         }
+        <div className='mybirder-spacer'></div>
+        </div>
       </div>
     </div>
   );

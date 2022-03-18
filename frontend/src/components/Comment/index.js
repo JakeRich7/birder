@@ -8,6 +8,7 @@ function Comment({ comment, id }) {
   const dispatch = useDispatch();
   const [editStatus, setEditStatus] = useState(false);
   const [body, setBody] = useState("");
+  const [commentBody, setCommentBody] = useState(comment.body);
   const [isHere, setIsHere] = useState(true);
 
   const handleDelete = async (e) => {
@@ -23,11 +24,9 @@ function Comment({ comment, id }) {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    // let sightingId = sighting.id;
-    // const response = await dispatch(sightingActions.editOne({ id: sightingId, address, details }));
-    // setSightingDetails(response.details);
-    // setSightingAddress(response.address);
-    // handleToggle();
+    const response = await dispatch(commentActions.editOne({ id: comment.id, body }));
+    setCommentBody(response.body);
+    handleToggle();
   }
 
   if (!isHere) {
@@ -38,7 +37,7 @@ function Comment({ comment, id }) {
     <div>
       <div className='comment-main-box'>
         <div>
-          {comment.body}
+          {commentBody}
         </div>
         <div>
           {

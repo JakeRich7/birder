@@ -97,8 +97,8 @@ const sightingsReducer = (state = initialState, action) => {
       return newState;
     case EDIT_SIGHTING:
       let index = 0;
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].id === action.payload.id) {
+      for (let i = 0; i < newState.allSightings.length; i++) {
+        if (newState.allSightings[i].id === action.payload.id) {
           index = i
         }
       }

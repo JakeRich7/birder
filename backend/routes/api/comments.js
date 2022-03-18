@@ -14,6 +14,24 @@ router.get(
   })
 )
 
+router.put(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { id, body } = req.body;
+
+    const comment = await Comment.findByPk(id);
+    comment.set({
+      body: body,
+    });
+
+    await comment.save();
+
+    return res.json({
+      comment
+    });
+  })
+)
+
 router.post(
   '/',
   asyncHandler(async (req, res) => {

@@ -14,6 +14,11 @@
   width: 80%;
   height: 100vh;
   background-color: #621B00;
+  padding-bottom: 100px;
+}
+
+.mybirder-inner-colorpage {
+  background-color: #621B00;
 }
 
 .mybirder-bird-name {
@@ -25,4 +30,8 @@
   font-size: 25px;
   font-weight: 600;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.mybirder-spacer {
+  padding-bottom: 100px;
 }
