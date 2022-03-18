@@ -145,9 +145,13 @@ function Sighting({ sighting }) {
       </div>
       {
         commentStatus &&
-        sightingComments.map(ele => {
-          return <Comment key={ele.id} comment={ele} id={id} />
-        })
+        <div className='sighting-all-comments-div'>
+          {
+            sightingComments.map(ele => {
+              return <Comment key={ele.id} comment={ele} id={id} />
+            })
+          }
+        </div>
       }
       {
         commentStatus &&

@@ -34,7 +34,7 @@ function MyBirder() {
           birdSightings &&
           birdSightings.map(ele => {
             return <div key={ele.id}>
-              <div className='mybirder-bird-name'>{ele.Bird.common_name}</div>
+              <div className='mybirder-bird-name'>{`${ele.Bird.common_name}:`}</div>
               <Sighting sighting={ele} />
             </div>
           })

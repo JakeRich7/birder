@@ -101,7 +101,7 @@ function Bird() {
             <audio className='bird-sound' controls src={myBird.sounds} />
           </div>
         </div>
-        <div>
+        <div className='bird-sightings-div'>
           {
             birdSightings &&
             birdSightings.map(ele => {

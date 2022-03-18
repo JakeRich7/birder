@@ -106,7 +106,6 @@
   width: 140px;
   height: 35px;
   border-radius: 13px;
-  background-color: green;
   background-image: linear-gradient(0deg, #1dc20e 0%, #33ff00 100%);
   margin-left: 5px;
 }
@@ -123,7 +122,7 @@
 
 .bird-address-label, .bird-details-label {
   margin-left: 10px;
-  color: white;
+  color: rgb(213, 247, 255);
 }
 
 .bird-upload-create-button-link {
@@ -141,5 +140,5 @@
 }
 
 .bird-add-comment-error-ul {
-  color: white
+  color: rgb(213, 247, 255);
 }
