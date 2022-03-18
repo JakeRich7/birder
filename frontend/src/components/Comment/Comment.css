@@ -29,7 +29,7 @@
 }
 
 .comment-upload-body {
-  margin-left: 10px;
+  margin-left: 15px;
   margin-right: 50%;
   max-height: 300px;
   max-width: 80%
@@ -37,6 +37,7 @@
 
 .comment-upload-create-button-link {
   margin-top: 2px;
+  margin-left: 5px;
   width: 105px;
   height: 25px;
   border-radius: 7px;
