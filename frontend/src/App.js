@@ -12,6 +12,7 @@ import About from "./components/About";
 import Discover from "./components/Discover";
 import Bird from "./components/Bird";
 import MyBirder from "./components/MyBirder";
+import Home from "./components/Home";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -29,6 +30,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/login">
             <LoginFormPage />
           </Route>

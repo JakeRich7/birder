@@ -1,0 +1,50 @@
+.signup-outer-div {
+  display: flex;
+  justify-content: center;
+}
+
+.signup-inner-div {
+  display: flex;
+  justify-content: center;
+  background-color: #621B00;
+  width: 80%;
+  height: 100vh;
+}
+
+.signup-form {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(0deg, #d0dd16 0%, #e5ff00 100%);
+  max-height: 600px;
+  padding: 50px;
+}
+
+.signup-email, .signup-username, .signup-password, .signup-confirm-password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.signup-email > *, .signup-username > *, .signup-password > *, .signup-confirm-password > * {
+  width: 250px;
+  height: 20px;
+  font-size: 16px;
+}
+
+.signup-errors-ul {
+  width: 250px;
+}
+
+.signup-form-signup-button {
+  width: 90px;
+  height: 25px;
+  border-radius: 7px;
+  background-image: linear-gradient(0deg, #1dc20e 0%, #33ff00 100%);
+}
+
+.signup-title {
+  font-size: 40px;
+}

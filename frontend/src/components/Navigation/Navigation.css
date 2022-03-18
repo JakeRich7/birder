@@ -64,29 +64,25 @@
 }
 
 .profile-dropdown > li {
+  background-color: rgb(97, 97, 97);
   list-style-type: none;
   padding: 5px;
 }
 
-.profile-name:hover {
-  cursor: default;
+.profile-name {
+  color: white;
 }
 
-.profile-logout-button {
+.profile-email {
+  color: white;
   text-decoration: none;
   border-top: 1px solid black;
 }
 
-.profile-logout-button > b {
-  text-decoration: none;
-  padding: 2px 5px;
-  border-radius: 5px;
-  background-color: #CECECE
+.profile-logout {
+  width: 70px;
+  height: 22px;
+  border-radius: 7px;
+  background-image: linear-gradient(0deg, rgb(248, 104, 104) 0%, rgb(247, 0, 0) 100%);
+  margin-left: 5px;
 }
-
-.profile-logout-button > b:hover {
-  background-color: rgb(156, 156, 156);
-  cursor: pointer;
-}
-
-/* 000000, 2F1000, 621B00, 945600, C75000 */

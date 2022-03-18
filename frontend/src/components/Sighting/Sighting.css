@@ -64,6 +64,7 @@
 }
 
 .sighting-comments-button {
+  margin-top: 5px;
   width: 120px;
   height: 22px;
   border-radius: 7px;
@@ -81,7 +82,6 @@
   width: 105px;
   height: 25px;
   border-radius: 7px;
-  background-color: green;
   background-image: linear-gradient(0deg, #1dc20e 0%, #33ff00 100%);
 }
 
@@ -141,8 +141,8 @@
 }
 
 .sighting-all-comments-div {
-  padding-top: 1px;
-  padding-bottom: 1px;
+  display: flex;
+  flex-direction: column;
   background-image: linear-gradient(0deg, #d0dd16 0%, #e5ff00 100%);
   margin-left: 100px;
   margin-right: 40px;

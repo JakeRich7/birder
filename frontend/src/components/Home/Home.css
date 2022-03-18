@@ -1,0 +1,47 @@
+.home-main-div {
+  display: flex;
+  justify-content: center;
+  max-height: 100vh;
+  background-color: #621B00;
+}
+
+.home-inner-div {
+  display: flex;
+}
+
+.home-content-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  background-color: rgb(97, 97, 97);
+}
+
+.home-main-img {
+  max-width: 70%;
+}
+
+.home-text-heading {
+  font-size: 40px;
+  font-weight: 600;
+  width: 370px;
+  color: rgb(213, 247, 255);
+  -webkit-text-stroke-width: .3px;
+  -webkit-text-stroke-color: black;
+}
+
+.home-auth-buttons {
+  padding: 20px;
+  margin-bottom: 70px;
+  margin-top: 10px;
+}
+
+.home-signup-button {
+  background-color: green;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
