@@ -1,5 +1,5 @@
 # Birder Overview:
-Birder is a birdwatching website for birders! A hub. A place to explore new bird species, create sightings of those species, and create and view comments for sightings.
+### Birder is a birdwatching website for birders! A hub. A place to explore new bird species, create sightings of those species, and create and view comments for sightings.
 
 # Launch Instructions:
 ## Backend
