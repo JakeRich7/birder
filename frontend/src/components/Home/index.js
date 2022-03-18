@@ -1,8 +1,11 @@
 import React from 'react';
 import './Home.css';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Home() {
+  const sessionUser = useSelector(state => state.session.user);
+
   return (
     <div className='home-main-div'>
       <div className='home-inner-div'>
@@ -10,9 +13,12 @@ function Home() {
           <div className='home-text-heading'>
             Discover a new world of birding...
           </div>
-          <div className='home-auth-buttons'>
-            <NavLink className='home-signup-button' to='/signup'>Get Started</NavLink>
-          </div>
+          {
+            !sessionUser &&
+            <div className='home-auth-buttons'>
+              <NavLink className='home-signup-button' to='/signup'>Get Started</NavLink>
+            </div>
+          }
         </div>
         <img className='home-main-img' src='https://res.cloudinary.com/dd9pletih/image/upload/v1647389985/fiery_throated_hummingbird_ty9kvh.jpg' alt='home main pic' />
       </div>
