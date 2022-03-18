@@ -105,7 +105,7 @@ function Bird() {
           <button onClick={toggleForm} className='bird-add-sighting-button'>Add Sighting</button>
           {
             formStatus &&
-            <form>
+            <form className='bird-upload-adress-form'>
               <label className="bird-address-label">
                 Address:
               </label>

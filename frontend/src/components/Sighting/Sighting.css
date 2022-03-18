@@ -3,7 +3,6 @@
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  height: 250px;
   border-radius: 10px;
   display: block;
 }
@@ -87,4 +86,55 @@
   border-radius: 7px;
   background-color: green;
   background-image: linear-gradient(0deg, #1dc20e 0%, #33ff00 100%);
+}
+
+.sighting-address-details-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sighting-upload-address, .sighting-upload-details {
+  margin-left: 20px;
+  margin-right: 50%;
+  max-height: 300px;
+  max-width: 80%
+}
+
+.sighting-address-label, .sighting-details-label {
+  margin-left: 10px;
+}
+
+.sighting-upload-create-button-link {
+  margin-left: 10px;
+  margin-top: 2px;
+  width: 105px;
+  height: 25px;
+  border-radius: 7px;
+  background-image: linear-gradient(0deg, #d0dd16 0%, #e5ff00 100%);
+}
+
+.sighting-upload-comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sighting-upload-body-textarea {
+  margin-left: 20px;
+  margin-right: 50%;
+  max-height: 300px;
+  max-width: 80%
+}
+
+.sighting-upload-body-label {
+  margin-left: 10px;
+  color: white;
+}
+
+.sighting-upload-body-submit {
+  margin-left: 10px;
+  margin-top: 2px;
+  width: 105px;
+  height: 25px;
+  border-radius: 7px;
+  background-image: linear-gradient(0deg, #d0dd16 0%, #e5ff00 100%);
 }

@@ -51,7 +51,7 @@ function Comment({ comment, id }) {
         <div>
           {
             editStatus &&
-            <form>
+            <form className='comment-body-form'>
               <label className="comment-body-label">
                 Body:
               </label>
