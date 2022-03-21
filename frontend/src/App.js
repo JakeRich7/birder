@@ -39,13 +39,13 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
           {
             !sessionUser &&
             <Redirect to='/' />
           }
-          <Route exact path="/about">
-            <About />
-          </Route>
           <Route exact path="/discover">
             <Discover />
           </Route>

@@ -19,10 +19,11 @@ function Navigation({ isLoaded }) {
   if (sessionUser) {
     sessionLinks = (
       <>
-        <div>
-          <NavLink className='discover-button' to="/discover">Discover</NavLink>
-          <NavLink className='mybirder-button' to="/mybirder">MyBirder</NavLink>
-          <NavLink className='about-button' to="/about">About</NavLink>
+        <div className='navigation-discover-mybirder-div'>
+          <div className='navigation-discover-mybirder'>
+            <NavLink className='discover-button' to="/discover">Discover</NavLink>
+            <NavLink className='mybirder-button' to="/mybirder">MyBirder</NavLink>
+          </div>
         </div>
         <ProfileButton user={sessionUser} />
       </>
@@ -42,7 +43,10 @@ function Navigation({ isLoaded }) {
   return (
     <ul className='nav-bar-ul'>
       <li className='nav-bar-li'>
-        <NavLink className='home-button' exact to="/">Home</NavLink>
+        <div>
+          <NavLink className='home-button' exact to="/">Home</NavLink>
+          <NavLink className='about-button' to="/about">About</NavLink>
+        </div>
         {isLoaded && sessionLinks}
       </li>
     </ul>
