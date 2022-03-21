@@ -21,7 +21,7 @@ module.exports = {
       {
         user_id: 3,
         sighting_id: 2,
-        body: 'Nice pic'
+        body: 'Nice job'
       },
       {
         user_id: 2,
@@ -32,6 +32,31 @@ module.exports = {
         user_id: 1,
         sighting_id: 3,
         body: 'Best bird call ever!'
+      },
+      {
+        user_id: 4,
+        sighting_id: 4,
+        body: 'Oh wow, such a pretty bird'
+      },
+      {
+        user_id: 3,
+        sighting_id: 4,
+        body: 'Very nice'
+      },
+      {
+        user_id: 1,
+        sighting_id: 4,
+        body: 'Shucks, thanks guys'
+      },
+      {
+        user_id: 1,
+        sighting_id: 6,
+        body: 'Feeling blessed'
+      },
+      {
+        user_id: 2,
+        sighting_id: 11,
+        body: 'I could fall asleep to this bird any day or night'
       }
     ]);
   },
