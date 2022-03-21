@@ -116,9 +116,11 @@ function Sighting({ sighting }) {
     <>
       <div className='sighting-div'>
         <div>
-          <div className='sighting-address-header'>Sighting Location:</div>
+          <div className='sighting-address-header'>Date:</div>
+          <div className='sighting-address'>{sighting.createdAt}</div>
+          <div className='sighting-address-header'>Location:</div>
           <div className='sighting-address'>{sightingAddress}</div>
-          <div className='sighting-details-header'>Sighting Details:</div>
+          <div className='sighting-details-header'>Details:</div>
           <div className='sighting-details'>{sightingDetails}</div>
           <div className='sighting-buttons-div'>
             {
