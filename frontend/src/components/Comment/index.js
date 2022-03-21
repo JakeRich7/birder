@@ -11,6 +11,7 @@ function Comment({ comment, id }) {
   const [commentBody, setCommentBody] = useState(comment.body);
   const [isHere, setIsHere] = useState(true);
   const [errors, setErrors] = useState([]);
+  const [showEditText, setShowEditText] = useState('Edit');
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -21,6 +22,11 @@ function Comment({ comment, id }) {
 
   const handleToggle = async (e) => {
     setEditStatus(!editStatus);
+    if (showEditText === 'Edit') {
+      setShowEditText('Cancel')
+    } else {
+      setShowEditText('Edit')
+    }
   }
 
   const handleEdit = async (e) => {
@@ -54,7 +60,7 @@ function Comment({ comment, id }) {
           {
             id === comment.user_id &&
             <>
-              <button onClick={handleToggle} className='comment-edit-button'>Edit</button>
+              <button onClick={handleToggle} className='comment-edit-button'>{showEditText}</button>
               <button onClick={handleDelete} className='comment-delete-button'>Delete</button>
             </>
           }

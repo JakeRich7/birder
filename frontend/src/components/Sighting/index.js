@@ -21,6 +21,9 @@ function Sighting({ sighting }) {
   const [body, setBody] = useState("");
   const [errors, setErrors] = useState([]);
   const [commentErrors, setCommentErrors] = useState([]);
+  const [showCommentStatus, setShowCommentStatus] = useState('Show Comments');
+  const [showEditText, setShowEditText] = useState('Edit');
+  const [showAddCommentText, setShowAddCommentText] = useState('Add Comment');
 
   useEffect(() => {
     let newArr = [];
@@ -42,14 +45,29 @@ function Sighting({ sighting }) {
 
   const handleToggle = async (e) => {
     setEditStatus(!editStatus);
+    if (showEditText === 'Edit') {
+      setShowEditText('Cancel')
+    } else {
+      setShowEditText('Edit')
+    }
   }
 
   const toggleComment = async (e) => {
     setAddCommentStatus(!addCommentStatus);
+    if (showAddCommentText === 'Add Comment') {
+      setShowAddCommentText('Cancel')
+    } else {
+      setShowAddCommentText('Add Comment')
+    }
   }
 
   const handleComments = async (e) => {
     setCommentStatus(!commentStatus);
+    if (showCommentStatus === 'Show Comments') {
+      setShowCommentStatus('Hide Comments')
+    } else {
+      setShowCommentStatus('Show Comments')
+    }
   }
 
   const handleEdit = async (e) => {
@@ -106,11 +124,11 @@ function Sighting({ sighting }) {
             {
               id === sighting.user_id &&
               <div className='sighting-edit-delete-div' >
-                <button onClick={handleToggle} className='sighting-edit-button'>Edit</button>
+                <button onClick={handleToggle} className='sighting-edit-button'>{showEditText}</button>
                 <button onClick={handleDelete} className='sighting-delete-button'>Delete</button>
               </div>
             }
-            <button onClick={handleComments} className='sighting-comments-button'>Show Comments</button>
+            <button onClick={handleComments} className='sighting-comments-button'>{showCommentStatus}</button>
           </div>
           {
             editStatus &&
@@ -156,7 +174,7 @@ function Sighting({ sighting }) {
       {
         commentStatus &&
         <div className='sighting-add-comment'>
-          <button onClick={toggleComment} className='sighting-add-comment-button'>Add Comment</button>
+          <button onClick={toggleComment} className='sighting-add-comment-button'>{showAddCommentText}</button>
         </div>
       }
       {

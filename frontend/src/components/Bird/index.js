@@ -18,6 +18,7 @@ function Bird() {
   const [address, setAddress] = useState("");
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState([]);
+  const [addSightingText, setAddSightingText] = useState('Add Sighting');
 
   useEffect(() => {
     if (allBirds) {
@@ -52,6 +53,11 @@ function Bird() {
 
   const toggleForm = async (e) => {
     setFormStatus(!formStatus);
+    if (addSightingText === 'Add Sighting') {
+      setAddSightingText('Cancel')
+    } else {
+      setAddSightingText('Add Sighting')
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -116,7 +122,7 @@ function Bird() {
           }
         </div>
         <div className='bird-add-sighting-div'>
-          <button onClick={toggleForm} className='bird-add-sighting-button'>Add Sighting</button>
+          <button onClick={toggleForm} className='bird-add-sighting-button'>{addSightingText}</button>
           {
             formStatus &&
             <form className='bird-upload-adress-form'>
