@@ -137,9 +137,37 @@
 
 .bird-upload-details {
   resize: none;
-  height: 120px;
+  height: 150px;
 }
 
 .bird-add-comment-error-ul {
   color: rgb(213, 247, 255);
+}
+
+.bird-address-characters-div {
+  display: flex;
+}
+
+.bird-address-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.bird-details-characters-div {
+  display: flex;
+}
+
+.bird-details-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.bird-sightings-div > * {
+  margin-bottom: 10px;
 }

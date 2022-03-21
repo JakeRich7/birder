@@ -28,10 +28,16 @@ const handleValidatePostErrors = (req, _res, next) => {
 const validatePost = [
   check('address')
     .exists({ checkFalsy: true })
-    .withMessage('Need an address'),
+    .withMessage('Need an address!'),
   check('details')
     .exists({ checkFalsy: true })
-    .withMessage('Details cannot be blank'),
+    .withMessage('Need details!'),
+  check('address')
+    .isLength({ max: 50 })
+    .withMessage('Need an address between 1 and 50 characters'),
+  check('details')
+    .isLength({ max: 500 })
+    .withMessage('Need details between 1 and 500 characters'),
   handleValidatePostErrors
 ];
 
@@ -55,10 +61,16 @@ const handleValidateEditErrors = (req, _res, next) => {
 const validateEdit = [
   check('address')
     .exists({ checkFalsy: true })
-    .withMessage('Need an address'),
+    .withMessage('Need an address!'),
   check('details')
     .exists({ checkFalsy: true })
-    .withMessage('Details cannot be blank'),
+    .withMessage('Need details!'),
+  check('address')
+    .isLength({ max: 50 })
+    .withMessage('Need an address between 1 and 50 characters'),
+  check('details')
+    .isLength({ max: 500 })
+    .withMessage('Need details between 1 and 500 characters'),
   handleValidateEditErrors
 ];
 

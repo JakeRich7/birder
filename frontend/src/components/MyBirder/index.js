@@ -13,7 +13,7 @@ function MyBirder() {
       let birdsArr = []
       allSightings.forEach(ele => {
         if (ele.user_id === Number(id)) {
-          birdsArr.push(ele);
+          birdsArr.unshift(ele);
         }
       })
       setBirdSightings(birdsArr);
@@ -30,16 +30,16 @@ function MyBirder() {
     <div className='mybirder-fullpage'>
       <div className='mybirder-innerpage'>
         <div className='mybirder-inner-colorpage'>
-        {
-          birdSightings &&
-          birdSightings.map(ele => {
-            return <div key={ele.id}>
-              <div className='mybirder-bird-name'>{`${ele.Bird.common_name}:`}</div>
-              <Sighting sighting={ele} />
-            </div>
-          })
-        }
-        <div className='mybirder-spacer'></div>
+          <div className='mybirder-newest-oldest'>Sightings: Newest - Oldest</div>
+          {
+            birdSightings &&
+            birdSightings.map(ele => {
+              return <div className='mybirder-sightings' key={ele.id}>
+                <Sighting sighting={ele} birdName={ele.Bird.common_name} />
+              </div>
+            })
+          }
+          <div className='mybirder-spacer'></div>
         </div>
       </div>
     </div>

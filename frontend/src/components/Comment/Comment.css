@@ -48,3 +48,19 @@
   margin-left: 10px;
   opacity: .5;
 }
+
+.comment-body-characters-div {
+  display: flex;
+}
+
+.comment-body-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.comment-main-body {
+  overflow-wrap: break-word;
+}

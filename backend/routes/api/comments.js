@@ -27,6 +27,9 @@ const validatePost = [
   check('body')
     .exists({ checkFalsy: true })
     .withMessage('Empty comments not allowed!'),
+  check('body')
+    .isLength({ max: 250 })
+    .withMessage('Need a body between 1 and 250 characters'),
   handleValidatePostErrors
 ];
 
@@ -51,6 +54,9 @@ const validateEdit = [
   check('body')
     .exists({ checkFalsy: true })
     .withMessage('Empty comments not allowed!'),
+  check('body')
+    .isLength({ max: 250 })
+    .withMessage('Need a body between 1 and 250 characters'),
   handleValidateEditErrors
 ];
 

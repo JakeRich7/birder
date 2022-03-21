@@ -149,3 +149,46 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.sighting-bird-name {
+  font-weight: 600;
+  padding: 5px;
+  font-size: 20px;
+  background-color: rgb(97, 97, 97);
+}
+
+.sighting-address-characters-div {
+  display: flex;
+}
+
+.sighting-address-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.sighting-details-characters-div {
+  display: flex;
+}
+
+.sighting-details-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.sighting-body-characters-div {
+  display: flex;
+}
+
+.sighting-body-characters {
+  margin-left: 30px;
+  background-color: rgb(213, 247, 255);
+  padding: 2px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

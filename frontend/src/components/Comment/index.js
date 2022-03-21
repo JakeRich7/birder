@@ -7,7 +7,7 @@ import './Comment.css';
 function Comment({ comment, id }) {
   const dispatch = useDispatch();
   const [editStatus, setEditStatus] = useState(false);
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState(comment.body);
   const [commentBody, setCommentBody] = useState(comment.body);
   const [isHere, setIsHere] = useState(true);
   const [errors, setErrors] = useState([]);
@@ -39,6 +39,7 @@ function Comment({ comment, id }) {
     if (!response) {
       return
     }
+    setErrors([])
     setCommentBody(response.body);
     handleToggle();
   }
@@ -50,7 +51,7 @@ function Comment({ comment, id }) {
   return (
     <div>
       <div className='comment-main-box'>
-        <div>
+        <div className='comment-main-body'>
           {commentBody}
         </div>
         <div className='comment-username-div'>
@@ -81,6 +82,9 @@ function Comment({ comment, id }) {
                 onChange={(e) => setBody(e.target.value)}
                 required
               />
+              <div className='comment-body-characters-div'>
+                <div className='comment-body-characters'>{250 - body.length + ' characters left'}</div>
+              </div>
               <button className="comment-upload-create-button-link" onClick={handleEdit}>Confirm Edit</button>
             </form>
           }

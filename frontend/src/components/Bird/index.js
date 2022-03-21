@@ -76,6 +76,7 @@ function Bird() {
     })
     newArr.push(mySighting);
     setBirdSightings(newArr);
+    setErrors([]);
     toggleForm();
     return;
   }
@@ -139,6 +140,9 @@ function Bird() {
                 onChange={(e) => setAddress(e.target.value)}
                 required
               />
+              <div className='bird-address-characters-div'>
+                <div className='bird-address-characters'>{50 - address.length + ' characters left'}</div>
+              </div>
               <label className="bird-details-label">
                 Details:
               </label>
@@ -148,6 +152,9 @@ function Bird() {
                 onChange={(e) => setDetails(e.target.value)}
                 required
               />
+              <div className='bird-details-characters-div'>
+                <div className='bird-details-characters'>{500 - details.length + ' characters left'}</div>
+              </div>
               <button className="bird-upload-create-button-link" onClick={handleSubmit}>Submit</button>
             </form>
           }
