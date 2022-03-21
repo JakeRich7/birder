@@ -47,6 +47,9 @@ function Comment({ comment, id }) {
         <div>
           {commentBody}
         </div>
+        <div className='comment-username-div'>
+          {`- ${comment.User.username}`}
+        </div>
         <div>
           {
             id === comment.user_id &&

@@ -4,24 +4,34 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Comments', [
       {
-        user_id: 3,
+        user_id: 1,
         sighting_id: 1,
         body: 'Wow, so jelly rn'
       },
       {
-        user_id: 3,
+        user_id: 1,
         sighting_id: 2,
-        body: 'I NEED a pet hummingbird pls'
+        body: 'I NEED some parrots PLS'
       },
       {
         user_id: 4,
         sighting_id: 2,
-        body: 'Love these little guys. Have a bird feeder in my backyard and see them all the time'
+        body: 'So cute!'
+      },
+      {
+        user_id: 3,
+        sighting_id: 2,
+        body: 'Nice pic'
+      },
+      {
+        user_id: 2,
+        sighting_id: 2,
+        body: 'Got lucky with this one haha. Thanks'
       },
       {
         user_id: 1,
         sighting_id: 3,
-        body: 'Owls are so majestic'
+        body: 'Best bird call ever!'
       }
     ]);
   },

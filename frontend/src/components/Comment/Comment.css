@@ -43,3 +43,8 @@
   border-radius: 7px;
   background-image: linear-gradient(0deg, #d0dd16 0%, #e5ff00 100%);
 }
+
+.comment-username-div {
+  margin-left: 10px;
+  opacity: .5;
+}

@@ -4,6 +4,7 @@ const { Comment } = require('../../db/models');
 const router = express.Router();
 const { check } = require('express-validator');
 const { validationResult } = require('express-validator');
+const { User } = require('../../db/models');
 
 const handleValidatePostErrors = (req, _res, next) => {
   const validationErrors = validationResult(req);
@@ -56,7 +57,7 @@ const validateEdit = [
 router.get(
   '/',
   asyncHandler(async (req, res) => {
-    const comments = await Comment.findAll();
+    const comments = await Comment.findAll({ include: { model: User } });
 
     return res.json({
       comments,
@@ -70,12 +71,14 @@ router.put(
   asyncHandler(async (req, res) => {
     const { id, body } = req.body;
 
-    const comment = await Comment.findByPk(id);
-    comment.set({
+    const myComment = await Comment.findByPk(id);
+    myComment.set({
       body: body,
     });
 
-    await comment.save();
+    await myComment.save();
+
+    const comment = await Comment.findOne({ where: { id: myComment.id }, include: { model: User } })
 
     return res.json({
       comment
@@ -95,7 +98,7 @@ router.post(
       body
     })
 
-    const comment = await Comment.findOne({ where: { id: postedComment.id } });
+    const comment = await Comment.findOne({ where: { id: postedComment.id }, include: { model: User } });
 
     return res.json({
       comment

@@ -17,6 +17,7 @@
 
 .bird-image {
   max-width: 100%;
+  min-width: 100%;
 }
 
 .bird-descriptive-content {

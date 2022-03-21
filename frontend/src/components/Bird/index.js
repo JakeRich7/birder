@@ -27,6 +27,12 @@ function Bird() {
           if (ele.conservation_status === 'Least Concern') {
             setMyStatusColor('green');
           }
+          if (ele.conservation_status === 'Vulnerable') {
+            setMyStatusColor('orange');
+          }
+          if (ele.conservation_status === 'Near Threatened') {
+            setMyStatusColor('yellow');
+          }
         }
       })
     }
