@@ -5,6 +5,7 @@ import './Bird.css';
 import Sighting from '../Sighting';
 import * as sightingActions from "../../store/sightings";
 import SimpleMap from '../GoogleMap';
+import Geocode from "react-geocode";
 
 function Bird() {
   const dispatch = useDispatch();
@@ -20,9 +21,10 @@ function Bird() {
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState([]);
   const [addSightingText, setAddSightingText] = useState('Add Sighting');
+  const [lati, setLati] = useState([]);
+  const [long, setLong] = useState([]);
 
-  let lat = [-38.375381, -40.375381];
-  let lng = [-139.682543, -141.682543];
+  Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
 
   useEffect(() => {
     if (allBirds) {
@@ -52,6 +54,16 @@ function Bird() {
         }
       })
       setBirdSightings(birdsArr);
+      birdSightings.forEach(ele => {
+        Geocode.fromAddress(ele.address).then(
+          (response) => {
+            const { lat, lng } = response.results[0].geometry.location;
+          },
+          (error) => {
+
+          }
+        )
+      })
     }
   }, [allSightings, id])
 
@@ -119,7 +131,9 @@ function Bird() {
           </div>
         </div>
         <div className='bird-maps-div'>
-          <SimpleMap lat={lat} lng={lng} />
+          {
+            <SimpleMap lat={lati} lng={long} />
+          }
         </div>
         <div className='bird-sightings-div'>
           {
