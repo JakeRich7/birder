@@ -21,10 +21,28 @@ function Bird() {
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState([]);
   const [addSightingText, setAddSightingText] = useState('Add Sighting');
-  const [lati, setLati] = useState([]);
-  const [long, setLong] = useState([]);
+  const [lati, setLati] = useState(-36.375381);
+  const [long, setLong] = useState(-137.682543);
+  const [addressToConvert, setAddressToConvert] = useState('');
+  const [message, setMessage] = useState(false);
 
   Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
+
+  useEffect(() => {
+    Geocode.fromAddress(addressToConvert).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        setLati(lat);
+        setLong(lng);
+        setMessage(false);
+      },
+      (error) => {
+        setLati(-38.375381);
+        setLong(-139.682543);
+        setMessage(true);
+      }
+    )
+  }, [addressToConvert]);
 
   useEffect(() => {
     if (allBirds) {
@@ -46,25 +64,15 @@ function Bird() {
   }, [allBirds, id]);
 
   useEffect(() => {
+    let birdsArr = []
     if (allSightings) {
-      let birdsArr = []
       allSightings.forEach(ele => {
         if (ele.bird_id === Number(id)) {
           birdsArr.push(ele);
         }
       })
-      setBirdSightings(birdsArr);
-      birdSightings.forEach(ele => {
-        Geocode.fromAddress(ele.address).then(
-          (response) => {
-            const { lat, lng } = response.results[0].geometry.location;
-          },
-          (error) => {
-
-          }
-        )
-      })
     }
+    setBirdSightings(birdsArr);
   }, [allSightings, id])
 
   const toggleForm = async (e) => {
@@ -92,6 +100,7 @@ function Bird() {
     })
     newArr.push(mySighting);
     setBirdSightings(newArr);
+
     setErrors([]);
     toggleForm();
     return;
@@ -132,14 +141,16 @@ function Bird() {
         </div>
         <div className='bird-maps-div'>
           {
-            <SimpleMap lat={lati} lng={long} />
+            <SimpleMap lat={lati} lng={long} message={message} />
           }
         </div>
         <div className='bird-sightings-div'>
           {
             birdSightings &&
             birdSightings.map(ele => {
-              return <Sighting key={ele.id} sighting={ele} />
+              return <div onClick={(e) => setAddressToConvert(ele.address)} key={ele.id} >
+                <Sighting sighting={ele} />
+              </div>
             })
           }
         </div>

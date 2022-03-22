@@ -3,8 +3,12 @@ import GoogleMapReact from 'google-map-react';
 import 'font-awesome/css/font-awesome.min.css';
 import './GoogleMap.css';
 
-const AnyReactComponent = ({ lat, lng }) => {
+const Marker = () => {
   return <i className="fa fa-map-marker fa-3x" />
+}
+
+const Message = () => {
+  return <div className='google-map-message'>The address for this sighting is invalid</div>
 }
 
 class SimpleMap extends Component {
@@ -19,21 +23,26 @@ class SimpleMap extends Component {
           <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.REACT_APP_GEOCODE_API_KEY }}
             center={{
-              lat: this.props.lat[0],
-              lng: this.props.lng[0]
+              lat: this.props.lat,
+              lng: this.props.lng
             }}
             defaultZoom={this.props.zoom}
           >
             {
               this.props.lat &&
-              this.props.lat.map((ele, i) => (
-                <AnyReactComponent
-                  key={this.props.lat[i]}
-                  lat={this.props.lat[i]}
-                  lng={this.props.lng[i]}
-                  text="My Marker"
+              <>
+                <Marker
+                  lat={this.props.lat}
+                  lng={this.props.lng}
                 />
-              ))
+                {
+                  this.props.message &&
+                  <Message
+                    lat={this.props.lat}
+                    lng={this.props.lng}
+                  />
+                }
+              </>
             }
           </GoogleMapReact>
         </div>

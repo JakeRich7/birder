@@ -70,6 +70,10 @@ function Sighting({ sighting, birdName }) {
     setSightingComments(newArr);
   }, [allComments, sighting.id])
 
+  const handleMaps = async (e) => {
+
+  }
+
   const handleDelete = async (e) => {
     e.preventDefault();
     let sightingId = sighting.id;
