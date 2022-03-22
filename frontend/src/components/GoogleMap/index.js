@@ -7,8 +7,8 @@ const Marker = () => {
   return <i className="fa fa-map-marker fa-3x" />
 }
 
-const Message = () => {
-  return <div className='google-map-message'>The address for this sighting is invalid</div>
+const Message = ({ message }) => {
+  return <div className='google-map-message'>{message}</div>
 }
 
 class SimpleMap extends Component {
@@ -38,6 +38,7 @@ class SimpleMap extends Component {
                 {
                   this.props.message &&
                   <Message
+                    message={this.props.message}
                     lat={this.props.lat}
                     lng={this.props.lng}
                   />

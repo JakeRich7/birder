@@ -23,8 +23,8 @@ function Bird() {
   const [addSightingText, setAddSightingText] = useState('Add Sighting');
   const [lati, setLati] = useState(-36.375381);
   const [long, setLong] = useState(-137.682543);
-  const [addressToConvert, setAddressToConvert] = useState('');
-  const [message, setMessage] = useState(false);
+  const [addressToConvert, setAddressToConvert] = useState('pacific ocean');
+  const [message, setMessage] = useState('');
 
   Geocode.setApiKey(process.env.REACT_APP_GEOCODE_API_KEY);
 
@@ -34,12 +34,12 @@ function Bird() {
         const { lat, lng } = response.results[0].geometry.location;
         setLati(lat);
         setLong(lng);
-        setMessage(false);
+        setMessage('');
       },
       (error) => {
         setLati(-38.375381);
         setLong(-139.682543);
-        setMessage(true);
+        setMessage('The address for this sighting is invalid');
       }
     )
   }, [addressToConvert]);
