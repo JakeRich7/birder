@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import './Bird.css';
 import Sighting from '../Sighting';
 import * as sightingActions from "../../store/sightings";
+import SimpleMap from '../GoogleMap';
 
 function Bird() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function Bird() {
   const [details, setDetails] = useState("");
   const [errors, setErrors] = useState([]);
   const [addSightingText, setAddSightingText] = useState('Add Sighting');
+
+  let lat = [-38.375381, -40.375381];
+  let lng = [-139.682543, -141.682543];
 
   useEffect(() => {
     if (allBirds) {
@@ -113,6 +117,9 @@ function Bird() {
             </div>
             <audio className='bird-sound' controls src={myBird.sounds} />
           </div>
+        </div>
+        <div className='bird-maps-div'>
+          <SimpleMap lat={lat} lng={lng} />
         </div>
         <div className='bird-sightings-div'>
           {
