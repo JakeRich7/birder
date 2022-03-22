@@ -6,7 +6,7 @@
 
 .discover-main-div {
   display: flex;
-  margin: 30px;
+  margin: 20px;
   padding: 20px;
   border-radius: 20px;
   background-color: #621B00;
@@ -66,4 +66,17 @@
   font-weight: 600;
   margin-left: 15px;
   font-style: italic;
+}
+
+.discover-search-box-div {
+  display: flex;
+  justify-content: center;
+}
+
+.discover-search-box {
+  width: 300px;
+  height: 30px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 20px;
 }

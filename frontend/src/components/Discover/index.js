@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import './Discover.css';
 import { NavLink } from 'react-router-dom';
 
 function Discover() {
   const allBirds = useSelector(state => state.birds.allBirds);
+  const [birdsToDisplay, setBirdsToDisplay] = useState([])
+  const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    let newBirdArr = [];
+    allBirds.forEach(ele => {
+      newBirdArr.push(ele);
+    });
+    setBirdsToDisplay(newBirdArr);
+  }, [allBirds])
+
+  useEffect(() => {
+    let newArr = [];
+    allBirds.forEach(ele => {
+      let commonName = ele.common_name.toLowerCase();
+      let scientificName = ele.scientific_name.toLowerCase();
+      if (commonName.indexOf(search.toLowerCase()) >= 0 || scientificName.indexOf(search.toLowerCase()) >= 0) {
+        newArr.push(ele);
+      }
+    })
+    setBirdsToDisplay(newArr)
+  }, [allBirds, search])
 
   if (!allBirds) {
     return (
@@ -14,8 +36,11 @@ function Discover() {
 
   return (
     <div>
+      <div className='discover-search-box-div'>
+        <input onChange={(e) => setSearch(e.target.value)} className='discover-search-box' placeholder='Search' />
+      </div>
       {
-        allBirds.map(ele => (
+        birdsToDisplay.map(ele => (
           <div key={ele.id} className='discover-main-div'>
             <div className='discover-image-div'>
               <NavLink to={`/discover/${ele.id}`}><img className='discover-image' src={ele.image} alt='bird-pic' /></NavLink>
