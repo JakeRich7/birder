@@ -104,7 +104,7 @@ const commentsReducer = (state = initialState, action) => {
       return newState;
     case DELETE_COMMENT:
       let newIndex = 0;
-      for (let i = 0; i < newState; i++) {
+      for (let i = 0; i < newState.allComments.length; i++) {
         if (newState.allComments[i].id === action.payload) {
           newIndex = i
         }
