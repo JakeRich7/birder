@@ -14,6 +14,7 @@
 
 ## Frontend
 * Start by navigating into the frontend folder
+* Create a .env file inside of this directory, using the .env.example as a template
 * run 'npm install' inside of that directory
 * run 'npm start'
 
