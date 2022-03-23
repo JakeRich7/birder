@@ -13,6 +13,7 @@ import Discover from "./components/Discover";
 import Bird from "./components/Bird";
 import MyBirder from "./components/MyBirder";
 import Home from "./components/Home";
+import BadUrl from "./components/BadUrl";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
@@ -54,6 +55,9 @@ function App() {
           </Route>
           <Route exact path="/mybirder">
             <MyBirder />
+          </Route>
+          <Route>
+            <BadUrl />
           </Route>
         </Switch>
       )}
