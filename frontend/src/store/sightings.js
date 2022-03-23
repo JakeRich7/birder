@@ -106,7 +106,7 @@ const sightingsReducer = (state = initialState, action) => {
       return newState;
     case DELETE_SIGHTING:
       let newIndex = 0;
-      for (let i = 0; i < newState; i++) {
+      for (let i = 0; i < newState.allSightings.length; i++) {
         if (newState.allSightings[i].id === action.payload) {
           newIndex = i
         }
