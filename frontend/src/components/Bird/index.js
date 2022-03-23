@@ -105,7 +105,8 @@ function Bird() {
     })
     newArr.push(mySighting);
     setBirdSightings(newArr);
-
+    setAddress('');
+    setDetails('');
     setErrors([]);
     toggleForm();
     return;
